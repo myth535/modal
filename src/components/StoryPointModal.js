@@ -56,7 +56,27 @@ class StoryPointModal extends React.Component {
                         opacity: dataModalAnimation.animatedOpacity,
                     },
                 ]}
-            ></Animated.View>
+            >
+                <View style={styles.headerContainer}>
+                    <Text style={styles.headText}>Story Point Estimation</Text>
+                    <Text
+                        style={styles.closeButton}
+                        onStartShouldSetResponderCapture={this.close}
+                    >
+                        X
+                    </Text>
+                </View>
+                <Text style={styles.actionText}>
+                    Select an estimation for your task
+                </Text>
+                <View
+                    style={
+                        isSmallScreen
+                            ? styles.mobilePointsContainer
+                            : styles.pointsContainer
+                    }
+                ></View>
+            </Animated.View>
         )
     }
 }
@@ -77,6 +97,41 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         marginTop: 10,
+    },
+    headerContainer: {
+        flexDirection: 'row',
+    },
+    headText: {
+        color: 'white',
+        fontSize: 12,
+        fontWeight: 'bold',
+    },
+    closeButton: {
+        color: 'white',
+        alignSelf: 'flex-end',
+        marginLeft: 'auto',
+        fontSize: 11,
+        ...Platform.select({
+            web: {
+                cursor: 'pointer',
+            },
+        }),
+    },
+    actionText: {
+        color: 'white',
+        fontSize: 10,
+        textDecorationLine: 'underline',
+        textDecorationColor: '#A16BFF',
+    },
+    pointsContainer: {
+        flexDirection: 'row',
+        marginTop: 5,
+        justifyContent: 'center',
+    },
+    mobilePointsContainer: {
+        flexDirection: 'column',
+        marginTop: 5,
+        justifyContent: 'center',
     },
 })
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Animated, Platform } from 'react-native'
 
+import EstimationPoint from './EstimationPoint'
 import { updateModalVisibility } from '../redux/actions'
 import store from '../redux/store'
 
@@ -47,6 +48,8 @@ class StoryPointModal extends React.Component {
 
     render() {
         const { dataModalAnimation } = this.props
+        const state = store.getState()
+        const { pointEstimation } = state
         const { isSmallScreen } = this.state
 
         return (
@@ -83,7 +86,21 @@ class StoryPointModal extends React.Component {
                             ? styles.mobilePointsContainer
                             : styles.pointsContainer
                     }
-                ></View>
+                >
+                    {estimationPointsData.map(estPoint => {
+                        const selected =
+                            estPoint.point === pointEstimation ? true : false
+                        return (
+                            <EstimationPoint
+                                point={estPoint.point}
+                                time={estPoint.time}
+                                key={estPoint.point}
+                                selected={selected}
+                                close={this.close}
+                            />
+                        )
+                    })}
+                </View>
             </Animated.View>
         )
     }

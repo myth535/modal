@@ -3,6 +3,7 @@ import {
     UPDATE_MODAL_VISIBILITY,
     SET_RESPONSIVE_EVENT,
 } from './actions'
+import { createStore } from 'redux'
 
 export const initialState = {
     pointEstimation: 5,
@@ -31,3 +32,7 @@ export const reducer = (state = initialState, action) => {
             return state
     }
 }
+
+const store = createStore(reducer)
+
+export default store

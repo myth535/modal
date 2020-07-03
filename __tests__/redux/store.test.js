@@ -34,4 +34,16 @@ describe('Redux Reducers', () => {
         const newState = { ...initialState, modalVisibility: false }
         expect(state).toEqual(newState)
     })
+
+    it('should signal that a small screen is detected', () => {
+        const state = reducer(undefined, setResponsiveEvent(false))
+        const newState = { ...initialState, isSmallScreen: false }
+        expect(state).toEqual(newState)
+    })
+
+    it('should signal that a large screen is detected', () => {
+        const state = reducer(undefined, setResponsiveEvent(true))
+        const newState = { ...initialState, isSmallScreen: true }
+        expect(state).toEqual(newState)
+    })
 })

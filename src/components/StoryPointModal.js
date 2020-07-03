@@ -24,6 +24,10 @@ class StoryPointModal extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.dataModalAnimation.modalAnimation(1, 20, 1)
+    }
+
     componentWillUnmount() {
         this.state.unsubscribe()
     }
@@ -35,8 +39,45 @@ class StoryPointModal extends React.Component {
     }
 
     render() {
-        return <Animated.View></Animated.View>
+        const { dataModalAnimation } = this.props
+        const { isSmallScreen } = this.state
+
+        return (
+            <Animated.View
+                style={[
+                    isSmallScreen
+                        ? styles.mobileModalContainer
+                        : styles.modalContainer,
+                    {
+                        transform: [
+                            { scale: dataModalAnimation.animatedScale },
+                        ],
+                        marginTop: dataModalAnimation.animatedMarginTop,
+                        opacity: dataModalAnimation.animatedOpacity,
+                    },
+                ]}
+            ></Animated.View>
+        )
     }
 }
+
+const styles = StyleSheet.create({
+    modalContainer: {
+        backgroundColor: '#091540',
+        width: 340,
+        height: 100,
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
+    },
+    mobileModalContainer: {
+        backgroundColor: '#091540',
+        width: 200,
+        height: 390,
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
+    },
+})
 
 export default StoryPointModal

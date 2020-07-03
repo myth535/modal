@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
 import store from '../redux/store'
 
+import { updatePointEstimation } from '../redux/actions'
+
 export default class EstimationPoint extends React.Component {
     constructor(props) {
         super(props)
@@ -20,6 +22,11 @@ export default class EstimationPoint extends React.Component {
 
     componentWillUnmount() {
         this.state.unsubscribe()
+    }
+
+    selectPoint = () => {
+        store.dispatch(updatePointEstimation(this.props.point))
+        this.props.close()
     }
 
     render() {

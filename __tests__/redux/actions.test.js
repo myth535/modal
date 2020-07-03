@@ -39,4 +39,20 @@ describe('Redux Actions', () => {
         }
         expect(updateModalVisibility(false)).toEqual(expectedAction)
     })
+
+    it('should create an action to update the cross plataform behaivor', () => {
+        const expectedAction = {
+            type: SET_RESPONSIVE_EVENT,
+            isSmallScreen: true,
+        }
+        expect(setResponsiveEvent(true)).toEqual(expectedAction)
+    })
+
+    it('should create an action to update the cross plataform behaivor', () => {
+        const expectedAction = {
+            type: SET_RESPONSIVE_EVENT,
+            isSmallScreen: false,
+        }
+        expect(setResponsiveEvent(false)).toEqual(expectedAction)
+    })
 })

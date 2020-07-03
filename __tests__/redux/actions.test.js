@@ -23,4 +23,20 @@ describe('Redux Actions', () => {
         }
         expect(updatePointEstimation(21)).toEqual(expectedAction)
     })
+
+    it('should create an action to update the modal visibility', () => {
+        const expectedAction = {
+            type: UPDATE_MODAL_VISIBILITY,
+            modalVisibility: true,
+        }
+        expect(updateModalVisibility(true)).toEqual(expectedAction)
+    })
+
+    it('should create an action to update the modal visibility', () => {
+        const expectedAction = {
+            type: UPDATE_MODAL_VISIBILITY,
+            modalVisibility: false,
+        }
+        expect(updateModalVisibility(false)).toEqual(expectedAction)
+    })
 })

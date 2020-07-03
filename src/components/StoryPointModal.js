@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Animated, Platform } from 'react-native'
 
+import { updateModalVisibility } from '../redux/actions'
 import store from '../redux/store'
 
 const estimationPointsData = [
@@ -36,6 +37,12 @@ class StoryPointModal extends React.Component {
         this.setState({
             isSmallScreen: store.getState().isSmallScreen,
         })
+    }
+
+    close = () => {
+        this.props.dataModalAnimation.modalAnimation(0, -60, 0, () =>
+            store.dispatch(updateModalVisibility(false))
+        )
     }
 
     render() {

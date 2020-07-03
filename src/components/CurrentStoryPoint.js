@@ -22,6 +22,10 @@ export default class CurrentStoryPoint extends React.Component {
         this.state.unsubscribe()
     }
 
+    setResponder() {
+        return true
+    }
+
     render() {
         return <View></View>
     }

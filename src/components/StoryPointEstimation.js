@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Animated } from 'react-native'
 
+import CurrentStoryPoint from './CurrentStoryPoint'
 import { updateModalVisibility, setResponsiveEvent } from '../redux/actions'
 import store from '../redux/store'
 
@@ -41,8 +42,25 @@ class StoryPointEstimation extends React.Component {
     }
 
     render() {
-        return <View onLayout={this.onLayoutChange}></View>
+        return (
+            <View style={styles.document} onLayout={this.onLayoutChange}>
+                <View style={styles.container}>
+                    <CurrentStoryPoint />
+                </View>
+            </View>
+        )
     }
 }
+
+const styles = StyleSheet.create({
+    document: {
+        flex: 1,
+    },
+    container: {
+        alignItems: 'center',
+        marginTop: 100,
+        transform: [{ scale: 1.2 }],
+    },
+})
 
 export default StoryPointEstimation

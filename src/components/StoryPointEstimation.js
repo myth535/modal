@@ -42,6 +42,10 @@ class StoryPointEstimation extends React.Component {
         }
     }
 
+    setResponder() {
+        return true
+    }
+
     render() {
         const { modalVisibility } = this.state
 

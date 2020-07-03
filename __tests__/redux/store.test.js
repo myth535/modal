@@ -22,4 +22,16 @@ describe('Redux Reducers', () => {
         const newState = { ...initialState, pointEstimation: 5 }
         expect(state).toEqual(newState)
     })
+
+    it('should show the modal', () => {
+        const state = reducer(undefined, updateModalVisibility(true))
+        const newState = { ...initialState, modalVisibility: true }
+        expect(state).toEqual(newState)
+    })
+
+    it('should hide the modal', () => {
+        const state = reducer(undefined, updateModalVisibility(false))
+        const newState = { ...initialState, modalVisibility: false }
+        expect(state).toEqual(newState)
+    })
 })

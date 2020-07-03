@@ -3,7 +3,7 @@ import { View, StyleSheet, Animated } from 'react-native'
 
 import CurrentStoryPoint from './CurrentStoryPoint'
 import StoryPointModal from './StoryPointModal'
-import { setResponsiveEvent } from '../redux/actions'
+import { updateModalVisibility, setResponsiveEvent } from '../redux/actions'
 import store from '../redux/store'
 
 const smallWidthBreakpoint = 408
@@ -29,6 +29,14 @@ class StoryPointEstimation extends React.Component {
             modalVisibility: globalState.modalVisibility,
             isSmallScreen: globalState.isSmallScreen,
         })
+    }
+
+    close = () => {
+        if (store.getState().modalVisibility) {
+            this.modalAnimation(0, -60, 0, () =>
+                store.dispatch(updateModalVisibility(false))
+            )
+        }
     }
 
     modalAnimation = (

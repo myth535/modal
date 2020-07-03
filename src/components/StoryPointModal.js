@@ -63,6 +63,7 @@ class StoryPointModal extends React.Component {
                         opacity: dataModalAnimation.animatedOpacity,
                     },
                 ]}
+                onStartShouldSetResponder={() => true}
             >
                 <View style={styles.headerContainer}>
                     <Text style={styles.headText}>Story Point Estimation</Text>

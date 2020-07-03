@@ -17,6 +17,10 @@ class StoryPointEstimation extends React.Component {
             isSmallScreen: globalState.isSmallScreen,
             unsubscribe: store.subscribe(this.updateState),
         }
+
+        this.animatedScale = new Animated.Value(0)
+        this.animatedMarginTop = new Animated.Value(-60)
+        this.animatedOpacity = new Animated.Value(0)
     }
 
     updateState = () => {
@@ -25,6 +29,29 @@ class StoryPointEstimation extends React.Component {
             modalVisibility: globalState.modalVisibility,
             isSmallScreen: globalState.isSmallScreen,
         })
+    }
+
+    modalAnimation = (
+        toValueScale,
+        toValueMarginTop,
+        toValueOpacity,
+        callback
+    ) => {
+        const duration = 250
+        Animated.parallel([
+            Animated.timing(this.animatedScale, {
+                toValue: toValueScale,
+                duration,
+            }),
+            Animated.timing(this.animatedMarginTop, {
+                toValue: toValueMarginTop,
+                duration,
+            }),
+            Animated.timing(this.animatedOpacity, {
+                toValue: toValueOpacity,
+                duration,
+            }),
+        ]).start(callback)
     }
 
     componentWillUnmount() {
@@ -48,6 +75,12 @@ class StoryPointEstimation extends React.Component {
 
     render() {
         const { modalVisibility } = this.state
+        const dataModalAnimation = {
+            modalAnimation: this.modalAnimation,
+            animatedScale: this.animatedScale,
+            animatedMarginTop: this.animatedMarginTop,
+            animatedOpacity: this.animatedOpacity,
+        }
 
         return (
             <View
@@ -57,8 +90,14 @@ class StoryPointEstimation extends React.Component {
                 onLayout={this.onLayoutChange}
             >
                 <View style={styles.container}>
-                    <CurrentStoryPoint />
-                    {modalVisibility ? <StoryPointModal /> : null}
+                    <CurrentStoryPoint
+                        dataModalAnimation={dataModalAnimation}
+                    />
+                    {modalVisibility ? (
+                        <StoryPointModal
+                            dataModalAnimation={dataModalAnimation}
+                        />
+                    ) : null}
                 </View>
             </View>
         )

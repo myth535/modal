@@ -27,6 +27,18 @@ export default class CurrentStoryPoint extends React.Component {
         return true
     }
 
+    showOptions = () => {
+        const state = store.getState()
+
+        if (state.modalVisibility) {
+            this.props.dataModalAnimation.modalAnimation(0, -60, 0, () =>
+                store.dispatch(updateModalVisibility(false))
+            )
+        } else {
+            store.dispatch(updateModalVisibility(true))
+        }
+    }
+
     render() {
         return (
             <View

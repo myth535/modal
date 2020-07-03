@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "StoryPointModal",
+    "slug": "story-point-modal",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "description": "My coding test",
+    "platforms": ["ios", "android", "web"],
+    "scheme": "https",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "test.modal.adrian",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "test.modal.adrian",
+      "versionCode": 1
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "StoryPointModal",
+  "name": "story-point-modal"
+}

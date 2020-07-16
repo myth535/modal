@@ -12,7 +12,11 @@
         "preset": "react-native",
         "globals": {
             "window": {}
-        }
+        },
+        "testMatch": [
+            "**/*.steps.js",
+            "**/*.test.js"
+          ]
     },
     "dependencies": {
         "@react-native-community/masked-view": "^0.1.7",

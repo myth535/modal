@@ -51,5 +51,13 @@ describe('Modal E2E', () => {
 
         //Checking if the modal opens and has the value 5 active
         checkingOpenModalProperly(cy, currentPoint)
+
+        //Click option with value 3
+        currentPoint = '3'
+        cy.get('div').eq(29).should('have.text', currentPoint)
+        cy.get('div').eq(29).click()
+
+        //Checking if the modal closes and the selected value now is 3
+        checkingModalIsClosedAndRemainValue(cy, currentPoint)
     });
 });

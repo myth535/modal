@@ -48,5 +48,8 @@ describe('Modal E2E', () => {
 
         //Checking if the modal closes and the selected value remains is 5
         checkingModalIsClosedAndRemainValue(cy, currentPoint)
+
+        //Checking if the modal opens and has the value 5 active
+        checkingOpenModalProperly(cy, currentPoint)
     });
 });

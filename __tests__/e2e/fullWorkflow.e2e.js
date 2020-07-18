@@ -42,5 +42,11 @@ describe('Modal E2E', () => {
 
          //Checking if the modal opens and has the value 5 active
          checkingOpenModalProperly(cy, currentPoint)
+
+         //Click outside the modal to close the modal.
+        cy.get('div').eq(0).click()
+
+        //Checking if the modal closes and the selected value remains is 5
+        checkingModalIsClosedAndRemainValue(cy, currentPoint)
     });
 });

@@ -1,3 +1,4 @@
 {
-    
+    "video": false,
+    "integrationFolder": "__tests__/e2e"
 }

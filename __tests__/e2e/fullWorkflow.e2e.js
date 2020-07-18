@@ -13,6 +13,15 @@ function checkingOpenModalProperly(tree, currentPoint) {
     cy.get('div').eq(33).should('have.class', 'r-backgroundColor-t6fudj')
 }
 
+function checkingModalIsClosedAndRemainValue(tree, currentPoint) {
+    //Negate a property in the modal (for know that is closed and is other div)
+    cy.get('div').eq(10).should('not.have.css', 'margin-top', '20px')
+    //I am not going to test if Story Point Estimation exist in div 12, because right now div 12 is detached to the DOM
+
+    //Validate that the current selected point remains the same
+    cy.get('div').eq(8).should('have.text', currentPoint)
+}
+
 describe('Modal E2E', () => {
     it('Recreating the entire workflow', () => {
         cy.visit('http://localhost:19006/');

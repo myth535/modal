@@ -30,5 +30,8 @@ describe('Modal E2E', () => {
 
         //The current selected point must be 5
         cy.get('div').eq(8).should('have.text', currentPoint)
+        
+        //Checking if the modal opens and has the value 5 active
+        checkingOpenModalProperly(cy, currentPoint)
     });
 });
